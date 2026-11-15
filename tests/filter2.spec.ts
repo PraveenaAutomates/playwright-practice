@@ -5,7 +5,7 @@ await page.goto('https://qapracticehub.com');
 await page.getByTestId('nav-shopping').click();
 await expect(page).toHaveURL('https://qapracticehub.com/#shopping');
 const products=page.getByTestId('shop-product');
-console.log('total products:',products.count());
+console.log('total products:',await products.count());
 const headPhones=products.filter({hasText :'Wireless Headphones'});
 const addtoCart=headPhones.getByTestId('shop-add-to-cart');
 await expect(addtoCart).toBeVisible();
@@ -14,7 +14,6 @@ await addtoCart.click();
 const value =headPhones.getByTestId('shop-qty-value');
 console.log('Quantity elements:', await value.count());
 console.log('Quantity text:', await value.allInnerTexts());
-//expect(controls).toBeVisible();
-//expect(controls.getByTestId('shop-qty-value')).toHaveText('1');
+await expect(page.getByTestId('shop-cart-item-name')).toHaveText('Wireless Headphones');
 }
 );
