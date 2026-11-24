@@ -4,6 +4,7 @@ test('learnTextRoles' , async({page})=>
 {
 await page.goto('https://playwrightlab.github.io/locators.html');
 //substring
+
 await expect(page.getByText('Welcome back,')).toBeVisible();
 //exact match
 await page.getByText('Delete' , {exact : true}).click();
